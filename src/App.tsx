@@ -37,8 +37,8 @@ function Header({ active = "" }: { active?: string }) {
   const [open, setOpen] = useState(false);
   return <header className="site-header"><div className="nav-wrap">
     <Brand />
-    <button className="mobile-menu" aria-label="Toggle navigation" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
-    <nav className={open ? "main-nav open" : "main-nav"}>
+    <button className="mobile-menu" type="button" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} aria-controls="primary-navigation" onClick={() => setOpen((previous) => !previous)}>{open ? <X /> : <Menu />}</button>
+    <nav id="primary-navigation" className={open ? "main-nav open" : "main-nav"} aria-label="Primary navigation">
       <a href="/#features" onClick={() => setOpen(false)}>Features</a>
       <a href="/#problem" onClick={() => setOpen(false)}>Why QaBox</a>
       <a href="/#workflow" onClick={() => setOpen(false)}>Workflow</a>
